@@ -36,3 +36,25 @@ if( ! function_exists('ai1wp_i10n') ){
     }
     add_action('plugins_loaded', 'ai1wp_i10n');
 }
+
+
+/**
+ * Enqueue Scripts
+ */
+if( ! function_exists('ai1wp_scripts') ){
+    function ai1wp_scripts(){
+        wp_enqueue_script( 'jquery' );
+        wp_enqueue_script( 'ai1wp', AI1WP_URL . '/assets/js/main.js', array('jquery'), time(), true );
+    }
+    add_action('wp_enqueue_scripts','ai1wp_scripts');
+}
+
+/**
+ * Enqueue Style
+ */
+if( ! function_exists('ai1wp_style') ){
+    function ai1wp_style(){
+        wp_enqueue_style('ai1wp', AI1WP_URL . '/assets/css/style.css', null, time(), 'all');
+    }
+    add_action('wp_enqueue_scripts','ai1wp_style');
+}
