@@ -24,7 +24,7 @@ define( 'AI1WP_PLUGIN_BASENAME', basename( dirname( __FILE__ ) ));
 define( 'AI1WP_PATH', dirname(__FILE__) );
 
 // Plugin URL
-define( 'AI1WP_URL', plugins_url( '' ));
+define( 'AI1WP_URL', plugins_url( '' , __FILE__ ));
 
 /**
  * Load Textdomain
