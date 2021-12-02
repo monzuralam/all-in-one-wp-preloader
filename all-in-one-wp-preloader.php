@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       All-in-one WP Preloader
+ * Plugin Name:       All-in-One WP Preloader
  * Plugin URI:        https://profiles.wordpress.org/monzuralam
- * Description:       Best wp preloader for your website.
+ * Description:       All-in-One Preloader helps you to create awesome preloader that easy to customize, works on all major browsers and with any wp theme.
  * Version:           1.0.0
  * Author:            Monzur Alam
  * Author URI:        https://profiles.wordpress.org/monzuralam
