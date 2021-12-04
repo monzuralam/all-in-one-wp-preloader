@@ -104,13 +104,17 @@ if( ! function_exists('ai1wp_preloader') ){
         $ai1wp_enable = esc_html(carbon_get_theme_option('ai1wp_enable'));
         if( $ai1wp_enable ){
             $loderStyle = esc_html(carbon_get_theme_option('ai1wp_layout_style'));
+            $ai1wp_custom_logo = esc_url( carbon_get_theme_option('ai1wp_img') );
+            $ai1wp_default_logo = esc_url( AI1WP_URL . '/assets/images/ai1wp.png') ;
+            $logo = $ai1wp_custom_logo ? $ai1wp_custom_logo : $ai1wp_default_logo;
             switch($loderStyle){
                 case '1':
                     echo '<div class="preloader ai1wp-style-1">
                         <figure>
-                            <img src="'.esc_url(carbon_get_theme_option('ai1wp_img')).'" alt="Image">
+                            <img src="'. $logo .'" alt="Image">
                         </figure>
                     </div>';
+                    // die;
                 break;
                 
                 case '2':
@@ -131,7 +135,7 @@ if( ! function_exists('ai1wp_preloader') ){
                 default:
                 echo '<div class="preloader ai1wp-style-1">
                     <figure>
-                        <img src="'.esc_url(carbon_get_theme_option('ai1wp_img')).'" alt="Image">
+                        <img src="'. $logo .'" alt="Image">
                     </figure>
                 </div>';
                 break;
@@ -150,12 +154,14 @@ if( ! function_exists('ai1wp_preloader_dynamic_style') ){
         $loader_number = esc_html(carbon_get_theme_option('ai1wp_layout_style'));
         $ai1wp_bg_color = esc_attr(carbon_get_theme_option('ai1wp_bg_color'));
         $ai1wp_logo = esc_url(carbon_get_theme_option('ai1wp_img'));
+        $ai1wp_default_logo = esc_url( AI1WP_URL . '/assets/images/ai1wp.png' );
+        $logo = $ai1wp_logo ? $ai1wp_logo : $ai1wp_default_logo;
         if( $loader_number != 1 ){
             echo '
             <style>
                 .ai1wp-style-'.$loader_number.'{
                     background-color: '.$ai1wp_bg_color.';
-                    background-image: url('.$ai1wp_logo.');
+                    background-image: url('. $logo .');
                 }
             </style>';
         }else{
