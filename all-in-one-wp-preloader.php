@@ -58,3 +58,18 @@ if( ! function_exists('ai1wp_style') ){
     }
     add_action('wp_enqueue_scripts','ai1wp_style');
 }
+
+/*--------------------------------------------------------------
+// Carbon fields Inclusion
+--------------------------------------------------------------*/
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
+require_once( AI1WP_PATH . '/admin/carbon-fields/vendor/autoload.php' );
+
+if( ! function_exists('ai1wp_preloader_boot') ){
+    function ai1wp_preloader_boot(){
+        \Carbon_Fields\Carbon_Fields::boot();
+    }
+    add_action('plugins_loaded','ai1wp_preloader_boot');
+}
