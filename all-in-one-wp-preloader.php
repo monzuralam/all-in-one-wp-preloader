@@ -73,3 +73,23 @@ if( ! function_exists('ai1wp_preloader_boot') ){
     }
     add_action('plugins_loaded','ai1wp_preloader_boot');
 }
+
+/*--------------------------------------------------------------
+// Settings
+--------------------------------------------------------------*/
+if( ! function_exists('ai1wp_setting_options') ){
+    function ai1wp_setting_options(){
+        Container::make( 'theme_options', __( 'All-in-One WP Preloader', 'all-in-one-wp-preloader' ) ) -> add_fields( array(
+            Field::make( 'checkbox', 'ai1wp_enable', __('Enable Preloader', 'all-in-one-wp-preloader') ),
+            Field::make( 'image', 'ai1wp_img', __( 'Preloader Image', 'all-in-one-wp-preloader' ) ) ->set_value_type( 'url' ),
+            Field::make( 'color', 'ai1wp_bg_color', __( 'Background Color', 'all-in-one-wp-preloader' ) ),
+            Field::make( 'select', 'ai1wp_layout_style', __( 'Preloader Design', 'all-in-one-wp-preloader' ) ) 
+            -> set_options( array(
+                '1' => __('Loader 1', 'all-in-one-wp-preloader'),
+                '2' => __('Loader 2', 'all-in-one-wp-preloader'),
+                '3' => __('Loader 3', 'all-in-one-wp-preloader'),
+            ) ),
+        ) );
+    }
+    add_action('carbon_fields_register_fields','ai1wp_setting_options');
+}
