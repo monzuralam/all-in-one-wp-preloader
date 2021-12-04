@@ -93,3 +93,49 @@ if( ! function_exists('ai1wp_setting_options') ){
     }
     add_action('carbon_fields_register_fields','ai1wp_setting_options');
 }
+
+/*--------------------------------------------------------------
+// Preloader Content
+--------------------------------------------------------------*/
+if( ! function_exists('ai1wp_preloader') ){
+    function ai1wp_preloader(){
+        $ai1wp_enable = esc_html(carbon_get_theme_option('ai1wp_enable'));
+        if( $ai1wp_enable ){
+            $loderStyle = esc_html(carbon_get_theme_option('ai1wp_layout_style'));
+            switch($loderStyle){
+                case '1':
+                    echo '<div class="preloader ai1wp-style-1">
+                        <figure>
+                            <img src="'.esc_url(carbon_get_theme_option('ai1wp_img')).'" alt="Image">
+                        </figure>
+                    </div>';
+                break;
+                
+                case '2':
+                    echo '<div class="preloader ai1wp-style-2"></div>';
+                break;
+
+                case '3':
+                    echo '<div class="loader-wrap">
+                        <div class="ai1wp-style-3">
+                            <div class="ai1wp-style-3-close">Preloader Close</div>
+                        </div>
+                        <div class="layer layer-one"><span class="overlay"></span></div>
+                        <div class="layer layer-two"><span class="overlay"></span></div>
+                        <div class="layer layer-three"><span class="overlay"></span></div>
+                    </div>';
+                break;
+
+                default:
+                echo '<div class="preloader ai1wp-style-1">
+                    <figure>
+                        <img src="'.esc_url(carbon_get_theme_option('ai1wp_img')).'" alt="Image">
+                    </figure>
+                </div>';
+                break;
+            }
+            
+        }
+    }
+    add_action('wp_body_open','ai1wp_preloader');
+}
