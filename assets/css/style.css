@@ -1,0 +1,184 @@
+/*--------------------------------------------------------------
+// Preloader Style 1
+--------------------------------------------------------------*/
+.page-loaded .ai1wp-style-1 {
+    width: 0;
+}
+
+.ai1wp-style-1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    z-index: 9999;
+    right: 0;
+    top: 0;
+    background: #fff;
+    transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.09, 1);
+}
+
+.ai1wp-style-1 figure {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: fadeup 0.30s;
+    position: relative;
+}
+
+.ai1wp-style-1 figure:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: 1px solid transparent;
+    border-top: 1px solid #fff;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    animation: rotate1 0.60s infinite;
+}
+
+.ai1wp-style-1 img {
+    height: 50px;
+    display: inline-block;
+}
+
+.page-loaded .ai1wp-style-1 {
+    top: -100%;
+}
+
+@keyframes fadeup {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotate1 {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/*--------------------------------------------------------------
+// Preloader Style 2
+--------------------------------------------------------------*/
+
+.page-loaded .ai1wp-style-2 {
+    width: 0;
+}
+.ai1wp-style-2 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-image: url("../images/pre-loader.gif");
+    background-color: #fff;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100px;
+    z-index: 9999999;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    transition-duration: 700ms;
+    -webkit-transition-duration: 700ms;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+    -webkit-transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+/*--------------------------------------------------------------
+// Preloader Style 3
+--------------------------------------------------------------*/
+.page-loaded .loader-wrap .layer .overlay {
+    width: 0;
+}
+.ai1wp-style-3 {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999999999999999;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100px;
+    background-image: url('../images/pre-loader.gif');
+}
+
+.ai1wp-style-3-close {
+    position: fixed;
+    z-index: 999999;
+    color: #000;
+    padding: 10px 20px;
+    cursor: pointer;
+    right: 0;
+    bottom: 0;
+    font-weight: 600;
+    background-color: #ffffff;
+}
+
+.loader-wrap {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+}
+
+.loader-wrap .layer-one {
+    position: absolute;
+    left: 0%;
+    top: 0;
+    width: 33.3333%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.loader-wrap .layer-two {
+    position: absolute;
+    left: 33.3333%;
+    top: 0;
+    width: 33.3333%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.loader-wrap .layer-three {
+    position: absolute;
+    left: 66.6666%;
+    top: 0;
+    width: 33.3333%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.loader-wrap .layer .overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
