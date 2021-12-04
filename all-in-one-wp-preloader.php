@@ -81,7 +81,9 @@ if( ! function_exists('ai1wp_setting_options') ){
     function ai1wp_setting_options(){
         Container::make( 'theme_options', __( 'All-in-One WP Preloader', 'all-in-one-wp-preloader' ) ) -> add_fields( array(
             Field::make( 'checkbox', 'ai1wp_enable', __('Enable Preloader', 'all-in-one-wp-preloader') ),
-            Field::make( 'image', 'ai1wp_img', __( 'Preloader Image', 'all-in-one-wp-preloader' ) ) ->set_value_type( 'url' ),
+            Field::make( 'image', 'ai1wp_img', __( 'Preloader Image', 'all-in-one-wp-preloader' ) ) 
+            ->set_help_text( __( 'If no image select then load default image.' ) )
+            ->set_value_type( 'url' ),
             Field::make( 'color', 'ai1wp_bg_color', __( 'Background Color', 'all-in-one-wp-preloader' ) ),
             Field::make( 'select', 'ai1wp_layout_style', __( 'Preloader Design', 'all-in-one-wp-preloader' ) ) 
             -> set_options( array(
