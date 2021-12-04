@@ -139,3 +139,32 @@ if( ! function_exists('ai1wp_preloader') ){
     }
     add_action('wp_body_open','ai1wp_preloader');
 }
+
+/*--------------------------------------------------------------
+// Preloader Dynamic Style
+--------------------------------------------------------------*/
+if( ! function_exists('ai1wp_preloader_dynamic_style') ){
+    function ai1wp_preloader_dynamic_style(){
+        $loader_number = esc_html(carbon_get_theme_option('ai1wp_layout_style'));
+        $ai1wp_bg_color = esc_attr(carbon_get_theme_option('ai1wp_bg_color'));
+        $ai1wp_logo = esc_url(carbon_get_theme_option('ai1wp_img'));
+        if( $loader_number != 1 ){
+            echo '
+            <style>
+                .ai1wp-style-'.$loader_number.'{
+                    background-color: '.$ai1wp_bg_color.';
+                    background-image: url('.$ai1wp_logo.');
+                }
+            </style>';
+        }else{
+            echo '
+            <style>
+                .ai1wp-style-'.$loader_number.'{
+                    background-color: '.$ai1wp_bg_color.';
+                }
+            </style>';
+        }
+
+    }
+    add_action('wp_head','ai1wp_preloader_dynamic_style');
+}
