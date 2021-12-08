@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       All-in-One WP Preloader
- * Plugin URI:        https://profiles.wordpress.org/monzuralam
+ * Plugin URI:        https://wordpress.org/plugins/all-in-one-wp-preloader
  * Description:       All-in-One Preloader helps you to create awesome preloader that easy to customize, works on all major browsers and with any wp theme.
  * Version:           1.0.0
  * Author:            Monzur Alam
@@ -9,7 +9,6 @@
  * Text Domain:       all-in-one-wp-preloader
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * GitHub Plugin URI: https://github.com/all-in-one-wp-preloader
  */
 
 // If this file is called directly, abort.
