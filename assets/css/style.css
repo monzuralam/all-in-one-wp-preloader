@@ -113,6 +113,11 @@
 .page-loaded .loader-wrap .layer .overlay {
     width: 0;
 }
+
+.page-loaded .loader-wrap {
+    position: relative;
+}
+
 .ai1wp-style-3 {
     position: fixed;
     left: 0px;
