@@ -1,5 +1,5 @@
 (function($){
-    $(window).load(function () {
+    $(window).on('load', function () {
         $("body").addClass("page-loaded");
 
         if ($('.ai1wp-style-3').length) {

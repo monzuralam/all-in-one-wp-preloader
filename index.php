@@ -1,2 +1,6 @@
 <?php
-// Silence is Golden
+/**
+ * Silence is golden.
+ *
+ * @package AI1WP
+ */

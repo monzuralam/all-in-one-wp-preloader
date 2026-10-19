@@ -1,0 +1,707 @@
+/*--------------------------------------------------------------
+// Settings App
+--------------------------------------------------------------*/
+$ai1wp-accent: var(--wp-admin-theme-color, #3858e9);
+$ai1wp-border: #e0e0e0;
+$ai1wp-text: #1e1e1e;
+$ai1wp-muted: #757575;
+$ai1wp-radius: 8px;
+
+.ai1wp-wrap {
+	margin: 0 20px 0 0;
+
+	@media (max-width: 782px) {
+		margin-right: 10px;
+	}
+}
+
+.ai1wp-app {
+	color: $ai1wp-text;
+
+	h2,
+	h3 {
+		margin: 0;
+		color: $ai1wp-text;
+	}
+
+	h3 {
+		font-size: 14px;
+		font-weight: 600;
+	}
+
+	.components-card {
+		border-radius: $ai1wp-radius;
+		box-shadow: 0 0 0 1px $ai1wp-border, 0 1px 2px rgba(0, 0, 0, 0.04);
+
+		> div:first-child {
+			border-radius: $ai1wp-radius;
+		}
+	}
+
+	.components-card__header {
+		min-height: 56px;
+		justify-content: space-between;
+	}
+}
+
+/*--------------------------------------------------------------
+// Header
+--------------------------------------------------------------*/
+.ai1wp-header {
+	position: sticky;
+	top: 32px;
+	z-index: 10;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	margin: 0 -20px 24px;
+	padding: 12px 20px;
+	background: #fff;
+	border-bottom: 1px solid $ai1wp-border;
+
+	@media (max-width: 782px) {
+		position: static;
+		margin: 0 -10px 16px -10px;
+		padding: 12px 10px;
+		flex-wrap: wrap;
+	}
+
+	&__brand {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	&__logo {
+		width: 32px;
+		height: 32px;
+		border-radius: 8px;
+		background: linear-gradient(135deg, #3858e9, #9b51e0);
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: 8px;
+			border: 2px solid rgba(255, 255, 255, 0.35);
+			border-top-color: #fff;
+			border-radius: 50%;
+			animation: ai1wp-spin 1s linear infinite;
+		}
+	}
+
+	&__title {
+		font-size: 18px;
+		font-weight: 600;
+	}
+
+	&__actions {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	&__unsaved {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		color: $ai1wp-muted;
+		font-size: 13px;
+
+		&::before {
+			content: "";
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: #f0b849;
+		}
+	}
+}
+
+.ai1wp-badge {
+	padding: 2px 8px;
+	border-radius: 20px;
+	background: #f0f0f0;
+	color: $ai1wp-muted;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.ai1wp-error {
+	margin: 0 0 16px;
+}
+
+/*--------------------------------------------------------------
+// Layout
+--------------------------------------------------------------*/
+.ai1wp-body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(360px, 520px);
+	gap: 24px;
+	align-items: start;
+
+	@media (max-width: 1280px) {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.ai1wp-main {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	min-width: 0;
+}
+
+.ai1wp-aside {
+	position: sticky;
+	top: 120px; // admin bar + header
+
+	@media (max-width: 1280px) {
+		position: static;
+	}
+}
+
+/*--------------------------------------------------------------
+// Layout Picker
+--------------------------------------------------------------*/
+.ai1wp-layouts {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+	gap: 16px;
+	margin-bottom: 8px;
+}
+
+.ai1wp-layout {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 12px;
+	text-align: left;
+	background: #fff;
+	border: 1px solid $ai1wp-border;
+	border-radius: $ai1wp-radius;
+	cursor: pointer;
+	transition: border-color 0.15s, box-shadow 0.15s;
+
+	&:hover {
+		border-color: #949494;
+	}
+
+	&:focus-visible {
+		outline: none;
+		box-shadow: 0 0 0 2px $ai1wp-accent;
+	}
+
+	&.is-selected {
+		border-color: $ai1wp-accent;
+		box-shadow: 0 0 0 1px $ai1wp-accent;
+	}
+
+	&__thumb {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 84px;
+		margin-bottom: 8px;
+		border-radius: 6px;
+		background: #f6f7f7;
+		overflow: hidden;
+	}
+
+	&__label {
+		font-weight: 600;
+		font-size: 13px;
+	}
+
+	&__desc {
+		color: $ai1wp-muted;
+		font-size: 12px;
+	}
+}
+
+// Loader 1: logo inside a spinning ring
+.ai1wp-layout__thumb--1 {
+
+	span {
+		display: none;
+	}
+
+	&::before {
+		content: "";
+		width: 40px;
+		height: 40px;
+		border: 2px solid #dcdcde;
+		border-top-color: $ai1wp-accent;
+		border-radius: 50%;
+		animation: ai1wp-spin 0.8s linear infinite;
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		border-radius: 4px;
+		background: $ai1wp-accent;
+		opacity: 0.6;
+	}
+}
+
+// Loader 2: image that slides away
+.ai1wp-layout__thumb--2 {
+
+	span {
+		display: none;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: #fff;
+		border-right: 2px solid $ai1wp-accent;
+		animation: ai1wp-slide 2.4s ease-in-out infinite;
+	}
+
+	&::after {
+		content: "";
+		position: relative;
+		width: 22px;
+		height: 22px;
+		border-radius: 50%;
+		background: $ai1wp-accent;
+		opacity: 0.6;
+		animation: ai1wp-pulse 1.2s ease-in-out infinite;
+	}
+}
+
+// Loader 3: three-panel reveal
+.ai1wp-layout__thumb--3 {
+	gap: 3px;
+	padding: 0 3px;
+
+	span {
+		flex: 1;
+		height: 100%;
+		background: #fff;
+		animation: ai1wp-panel 2.4s ease-in-out infinite;
+
+		&:nth-child(2) {
+			animation-delay: 0.15s;
+		}
+
+		&:nth-child(3) {
+			animation-delay: 0.3s;
+		}
+	}
+
+	&::after {
+		content: "";
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		border: 2px solid $ai1wp-accent;
+		border-top-color: transparent;
+		animation: ai1wp-spin 0.8s linear infinite;
+	}
+}
+
+// Loader 4: bouncing dots
+.ai1wp-layout__thumb--4 {
+	gap: 6px;
+
+	span {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: $ai1wp-accent;
+		animation: ai1wp-bounce 1.2s infinite ease-in-out both;
+
+		&:nth-child(2) {
+			animation-delay: 0.15s;
+		}
+
+		&:nth-child(3) {
+			animation-delay: 0.3s;
+		}
+	}
+}
+
+// Loader 5: progress bar
+.ai1wp-layout__thumb--5 {
+
+	span {
+		display: none;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -40%;
+		width: 40%;
+		height: 3px;
+		background: $ai1wp-accent;
+		animation: ai1wp-progress 1.4s ease-in-out infinite;
+	}
+
+	&::after {
+		content: "";
+		width: 22px;
+		height: 22px;
+		border-radius: 4px;
+		background: $ai1wp-accent;
+		opacity: 0.6;
+		animation: ai1wp-pulse 1.6s ease-in-out infinite;
+	}
+}
+
+// Loader 6: split curtain
+.ai1wp-layout__thumb--6 {
+
+	span {
+		position: absolute;
+		z-index: 1;
+		top: 0;
+		left: 0;
+		width: 50%;
+		height: 100%;
+		background: #fff;
+		animation: ai1wp-curtain-left 2.4s ease-in-out infinite;
+
+		&:nth-child(2) {
+			left: auto;
+			right: 0;
+			animation-name: ai1wp-curtain-right;
+		}
+
+		&:nth-child(3) {
+			display: none;
+		}
+	}
+
+	&::after {
+		content: "";
+		width: 22px;
+		height: 22px;
+		border-radius: 4px;
+		background: $ai1wp-accent;
+		opacity: 0.6;
+	}
+}
+
+// Loader 7: circle reveal
+.ai1wp-layout__thumb--7 {
+
+	span {
+		display: none;
+	}
+
+	&::before {
+		content: "";
+		position: absolute;
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+		background: #fff;
+		animation: ai1wp-circle 2.4s ease-in-out infinite;
+	}
+
+	&::after {
+		content: "";
+		position: relative;
+		width: 20px;
+		height: 20px;
+		border: 2px solid $ai1wp-accent;
+		border-radius: 50%;
+		animation: ai1wp-ripple 1.6s ease-out infinite;
+	}
+}
+
+/*--------------------------------------------------------------
+// Appearance
+--------------------------------------------------------------*/
+.ai1wp-appearance {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+	gap: 24px;
+}
+
+.ai1wp-image {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+
+	&__preview {
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex: 0 0 96px;
+		height: 96px;
+		padding: 8px;
+		background: #f6f7f7 repeating-conic-gradient(#f0f0f0 0% 25%, #fff 0% 50%) 50% / 16px 16px;
+		border: 1px solid $ai1wp-border;
+		border-radius: $ai1wp-radius;
+		cursor: pointer;
+
+		&:focus-visible {
+			outline: none;
+			box-shadow: 0 0 0 2px $ai1wp-accent;
+		}
+
+		img {
+			max-width: 100%;
+			max-height: 100%;
+			object-fit: contain;
+		}
+	}
+
+	&__badge {
+		position: absolute;
+		bottom: 4px;
+		left: 50%;
+		transform: translateX(-50%);
+		padding: 0 6px;
+		border-radius: 10px;
+		background: rgba(0, 0, 0, 0.6);
+		color: #fff;
+		font-size: 10px;
+		line-height: 16px;
+	}
+
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 4px;
+	}
+}
+
+/*--------------------------------------------------------------
+// Live Preview
+--------------------------------------------------------------*/
+.ai1wp-preview {
+
+	.components-notice {
+		margin: 0 0 12px;
+	}
+
+	&__help {
+		margin: 12px 0 0;
+		color: $ai1wp-muted;
+		font-size: 12px;
+	}
+}
+
+.ai1wp-browser {
+	border: 1px solid $ai1wp-border;
+	border-radius: $ai1wp-radius;
+	overflow: hidden;
+	background: #fff;
+
+	&__bar {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 8px 12px;
+		background: #f6f7f7;
+		border-bottom: 1px solid $ai1wp-border;
+	}
+
+	&__dots {
+		display: flex;
+		gap: 6px;
+
+		span {
+			width: 10px;
+			height: 10px;
+			border-radius: 50%;
+			background: #dcdcde;
+
+			&:nth-child(1) {
+				background: #ff5f57;
+			}
+
+			&:nth-child(2) {
+				background: #febc2e;
+			}
+
+			&:nth-child(3) {
+				background: #28c840;
+			}
+		}
+	}
+
+	&__url {
+		flex: 1;
+		min-width: 0;
+		padding: 2px 10px;
+		overflow: hidden;
+		background: #fff;
+		border-radius: 12px;
+		color: $ai1wp-muted;
+		font-size: 12px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__frame {
+		display: block;
+		width: 100%;
+		height: 360px;
+		border: 0;
+	}
+}
+
+/*--------------------------------------------------------------
+// Snackbar
+--------------------------------------------------------------*/
+.ai1wp-snackbar {
+	position: fixed;
+	bottom: 24px;
+	left: 184px; // admin menu width + gutter
+	z-index: 100000;
+
+	.folded & {
+		left: 60px;
+	}
+
+	@media (max-width: 960px) {
+		left: 60px;
+	}
+
+	@media (max-width: 782px) {
+		left: 16px;
+		right: 16px;
+	}
+}
+
+/*--------------------------------------------------------------
+// Animations
+--------------------------------------------------------------*/
+@keyframes ai1wp-spin {
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes ai1wp-slide {
+
+	0%,
+	30% {
+		transform: translateX(0);
+	}
+
+	60%,
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes ai1wp-pulse {
+
+	50% {
+		transform: scale(0.8);
+	}
+}
+
+@keyframes ai1wp-panel {
+
+	0%,
+	30% {
+		transform: translateY(0);
+	}
+
+	60%,
+	100% {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes ai1wp-bounce {
+
+	0%,
+	80%,
+	100% {
+		transform: scale(0.4);
+		opacity: 0.5;
+	}
+
+	40% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes ai1wp-progress {
+
+	to {
+		left: 100%;
+	}
+}
+
+@keyframes ai1wp-curtain-left {
+
+	0%,
+	30% {
+		transform: translateX(0);
+	}
+
+	60%,
+	100% {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes ai1wp-curtain-right {
+
+	0%,
+	30% {
+		transform: translateX(0);
+	}
+
+	60%,
+	100% {
+		transform: translateX(100%);
+	}
+}
+
+@keyframes ai1wp-circle {
+
+	0%,
+	30% {
+		transform: scale(1.6);
+	}
+
+	60%,
+	100% {
+		transform: scale(0);
+	}
+}
+
+@keyframes ai1wp-ripple {
+
+	0% {
+		transform: scale(0.6);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(1.8);
+		opacity: 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+	.ai1wp-app *,
+	.ai1wp-app *::before,
+	.ai1wp-app *::after {
+		animation: none !important;
+	}
+}

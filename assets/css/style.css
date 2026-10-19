@@ -187,3 +187,282 @@
     height: 100%;
     background: #fff;
 }
+/*--------------------------------------------------------------
+// Preloader Style 4
+--------------------------------------------------------------*/
+.ai1wp-style-4 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    -webkit-transition: opacity 0.6s ease, visibility 0.6s ease;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.page-loaded .ai1wp-style-4 {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.ai1wp-style-4 img {
+    height: 80px;
+    margin-bottom: 24px;
+    animation: fadeup 0.30s;
+}
+
+.ai1wp-style-4-dots {
+    display: flex;
+}
+
+.ai1wp-style-4-dots span {
+    width: 12px;
+    height: 12px;
+    margin: 0 4px;
+    border-radius: 50%;
+    background: #3858e9;
+    animation: ai1wp-bounce 1.2s infinite ease-in-out both;
+}
+
+.ai1wp-style-4-dots span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.ai1wp-style-4-dots span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes ai1wp-bounce {
+    0%,
+    80%,
+    100% {
+        transform: scale(0.4);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/*--------------------------------------------------------------
+// Preloader Style 5
+--------------------------------------------------------------*/
+.ai1wp-style-5 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    -webkit-transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
+}
+
+.page-loaded .ai1wp-style-5 {
+    transform: translateY(-100%);
+}
+
+.ai1wp-style-5 img {
+    height: 80px;
+    animation: ai1wp-logo-pulse 1.6s ease-in-out infinite;
+}
+
+.ai1wp-style-5-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 3px;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.06);
+}
+
+.ai1wp-style-5-bar:before {
+    content: "";
+    position: absolute;
+    left: -40%;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background: #3858e9;
+    animation: ai1wp-progress 1.4s ease-in-out infinite;
+}
+
+@keyframes ai1wp-progress {
+    0% {
+        left: -40%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes ai1wp-logo-pulse {
+    50% {
+        transform: scale(0.92);
+        opacity: 0.7;
+    }
+}
+
+/*--------------------------------------------------------------
+// Preloader Style 6
+// Background color is set on the panels via --ai1wp-bg.
+--------------------------------------------------------------*/
+.ai1wp-style-6 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: visibility 0s linear 1.1s;
+    transition: visibility 0s linear 1.1s;
+}
+
+.page-loaded .ai1wp-style-6 {
+    visibility: hidden;
+}
+
+.ai1wp-style-6-panel {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    background-color: var(--ai1wp-bg, #fff);
+    -webkit-transition: transform 0.9s cubic-bezier(0.86, 0, 0.07, 1) 0.2s;
+    transition: transform 0.9s cubic-bezier(0.86, 0, 0.07, 1) 0.2s;
+}
+
+.ai1wp-style-6-panel-left {
+    left: 0;
+}
+
+.ai1wp-style-6-panel-right {
+    right: 0;
+}
+
+.page-loaded .ai1wp-style-6-panel-left {
+    transform: translateX(-100%);
+}
+
+.page-loaded .ai1wp-style-6-panel-right {
+    transform: translateX(100%);
+}
+
+.ai1wp-style-6-logo {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeup 0.30s;
+    -webkit-transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.page-loaded .ai1wp-style-6-logo {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.ai1wp-style-6-logo img {
+    height: 80px;
+}
+
+.ai1wp-style-6-logo:before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    margin-left: -5px;
+    border-radius: 50%;
+    background: #3858e9;
+    transform-origin: 5px 70px;
+    animation: rotate1 1.2s linear infinite;
+}
+
+/*--------------------------------------------------------------
+// Preloader Style 7
+--------------------------------------------------------------*/
+.ai1wp-style-7 {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    -webkit-clip-path: circle(150% at 50% 50%);
+    clip-path: circle(150% at 50% 50%);
+    -webkit-transition: -webkit-clip-path 0.9s cubic-bezier(0.86, 0, 0.07, 1), visibility 0s linear 0.9s;
+    transition: clip-path 0.9s cubic-bezier(0.86, 0, 0.07, 1), visibility 0s linear 0.9s;
+}
+
+.page-loaded .ai1wp-style-7 {
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+    visibility: hidden;
+}
+
+.ai1wp-style-7 img {
+    position: relative;
+    height: 80px;
+    animation: fadeup 0.30s;
+}
+
+.ai1wp-style-7-ripple {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}
+
+.ai1wp-style-7-ripple span {
+    position: absolute;
+    left: -60px;
+    top: -60px;
+    width: 120px;
+    height: 120px;
+    border: 2px solid #3858e9;
+    border-radius: 50%;
+    opacity: 0;
+    animation: ai1wp-ripple 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.ai1wp-style-7-ripple span:nth-child(2) {
+    animation-delay: 1s;
+}
+
+@keyframes ai1wp-ripple {
+    0% {
+        transform: scale(0.5);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
